@@ -85,14 +85,26 @@ class ChecklistViewController: UITableViewController {
     
     //Marcar o desmarcar con un clic la celda seleccionada
     func configureCheckmark(for cell: UITableViewCell, with item: ChecklistItem){
+        guard let checkmark = cell.viewWithTag(1001) as? UILabel else {return}
         let isChecked = item.checked
         if isChecked {
-            cell.accessoryType = .checkmark
+            checkmark.text = "√"
         } else {
-            cell.accessoryType = .none
+            checkmark.text = ""
         }
         //pone el check a la inversa
         item.toggleeChecked()
     }
+    
+    //Anadir item mediante el boton add
+    override func prepare (for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "AddItemSegues"{
+            if let addItemViewController = segue.destination as? AddItemTableViewController{
+                addItemViewController.delegate = self
+            }
+        }
+    }
 }
+
+
 

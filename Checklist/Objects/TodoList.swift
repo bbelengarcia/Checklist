@@ -40,7 +40,7 @@ class TodoList {
         return item
     }
     private func randomTitle() -> String {
-        var titles = ["1", "2", "3", "4", "5"]
+        let titles = ["1", "2", "3", "4", "5"]
         let randomNumer = Int.random(in: 0 ... titles.count-1)
         return titles[randomNumer]
     }

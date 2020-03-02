@@ -15,24 +15,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="ChecklistItem" id="cPm-nb-FOT">
-                                <rect key="frame" x="0.0" y="28" width="414" height="66"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ChecklistItem" id="cPm-nb-FOT">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cPm-nb-FOT" id="ccG-ob-k7m">
-                                    <rect key="frame" x="0.0" y="0.0" width="370" height="66"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="351" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="√" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="11F-vu-JzN">
+                                            <rect key="frame" x="20" y="11.5" width="13" height="20.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="13" id="qa3-li-cSz"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P18-6E-uwP">
-                                            <rect key="frame" x="20" y="22" width="42" height="21.5"/>
+                                            <rect key="frame" x="53" y="11.5" width="278" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="P18-6E-uwP" firstAttribute="leading" secondItem="ccG-ob-k7m" secondAttribute="leading" constant="20" id="4Ni-Fc-O2j"/>
-                                        <constraint firstItem="P18-6E-uwP" firstAttribute="top" secondItem="ccG-ob-k7m" secondAttribute="topMargin" priority="750" constant="11" id="Upv-jh-s0S"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="P18-6E-uwP" secondAttribute="bottom" priority="750" constant="11.5" id="y7W-FL-bhf"/>
+                                        <constraint firstAttribute="trailing" secondItem="P18-6E-uwP" secondAttribute="trailing" constant="20" id="0n9-Ph-riQ"/>
+                                        <constraint firstItem="P18-6E-uwP" firstAttribute="leading" secondItem="11F-vu-JzN" secondAttribute="trailing" constant="20" id="GhN-fB-HNb"/>
+                                        <constraint firstItem="11F-vu-JzN" firstAttribute="leading" secondItem="ccG-ob-k7m" secondAttribute="leading" constant="20" id="IMo-Ns-r51"/>
+                                        <constraint firstItem="11F-vu-JzN" firstAttribute="centerY" secondItem="ccG-ob-k7m" secondAttribute="centerY" id="fYC-wO-Krh"/>
+                                        <constraint firstItem="P18-6E-uwP" firstAttribute="centerY" secondItem="ccG-ob-k7m" secondAttribute="centerY" id="qcv-1h-zAZ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -51,7 +62,7 @@
                             </barButtonItem>
                             <barButtonItem systemItem="add" id="M7v-MN-Tcr">
                                 <connections>
-                                    <segue destination="6Zj-Jt-eff" kind="show" id="wOY-rl-UB6"/>
+                                    <segue destination="6Zj-Jt-eff" kind="show" identifier="AddItemSegues" id="wOY-rl-UB6"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>

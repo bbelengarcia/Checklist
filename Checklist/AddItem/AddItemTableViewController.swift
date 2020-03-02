@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Protocolo que debe seguir la interfaz, funciones que tiene que realizar
 protocol AddItemViewControllerDelegate {
     func addItemViewControllerDidCancel(_ controller: AddItemTableViewController)
     func addItemViewController(_  controller: AddItemTableViewController, didFinishAdding item: ChecklistItem)
@@ -81,15 +82,3 @@ extension AddItemTableViewController: UITextFieldDelegate {
     }
 }
 
-
-/*
-extension ChecklistViewController: AddItemViewControllerDelegate {
-    func addItemViewControllerDidCancel(_ controller: AddItemTableViewController) {
-        navigationController?.popViewController(animated: true)
-    }
-    func addItemViewController(_ controller: AddItemTableViewController, didFinishAdding item: ChecklistItem) {
-        navigationController?.popViewController(animated: true)
-    }
-}
- 
- */
