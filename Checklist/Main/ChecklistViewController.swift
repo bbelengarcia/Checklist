@@ -97,10 +97,22 @@ class ChecklistViewController: UITableViewController {
     }
     
     //Anadir item mediante el boton add
+    //Cuando el segue se inicializa, este metodo es llamado
     override func prepare (for segue: UIStoryboardSegue, sender: Any?){
-        if segue.identifier == "AddItemSegues"{
+        //Identificador asignado al segues
+        if segue.identifier == "AddItemSegue"{
             if let addItemViewController = segue.destination as? AddItemTableViewController{
                 addItemViewController.delegate = self
+                addItemViewController.todoList = todoList
+            }
+        } else if segue.identifier == "EditItemSegue"{
+            if let addItemViewController = segue.destination as? AddItemTableViewController{
+                if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell){
+                    let item = todoList.todos[indexPath.row]
+                    addItemViewController.itemToEdit = item
+                    addItemViewController.delegate = self
+                    print("EditSegue")
+                }
             }
         }
     }

@@ -12,42 +12,58 @@ import UIKit
 protocol AddItemViewControllerDelegate {
     func addItemViewControllerDidCancel(_ controller: AddItemTableViewController)
     func addItemViewController(_  controller: AddItemTableViewController, didFinishAdding item: ChecklistItem)
+    func addItemViewController(_ controller: AddItemTableViewController, didFinishEditing item: ChecklistItem)
 }
 
 //Clase utilizada para cuando pulsas el + en la pantalla ppial
 
 class AddItemTableViewController: UITableViewController {
     
+    //Estos objetos SI pueden ser nulables
+    //Permite el acceso a la interfaz del padre 
     var delegate: AddItemViewControllerDelegate?
+    weak var todoList: TodoList?
+    weak var itemToEdit: ChecklistItem?
     
     //Referencias a los objetos del storyboard
-    //Debe existir la referencia si no dara error (!), es decir el valor del atributo no puede ser nil
+    //Debe existir la referencia si no dara error (!), es decir el valor del atributo no puede ser nil (estos objetos NO son nulables)
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var addBarButton: UIBarButtonItem!
     @IBOutlet weak var cancelBarButton: UIBarButtonItem!
     
     //Cancel button
     @IBAction func cancel(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
         delegate?.addItemViewControllerDidCancel(self)
     }
     
     //Add button
     @IBAction func done(_ sender: Any) {
-        //Comprueba que el valor no es nulo
-        navigationController?.popViewController(animated: true)
-        //textField.text es el contenido del texto libre que anadimos en la interfaz
-        let item = ChecklistItem()
-        if let textFieldText = textField.text {
-            item.text = textFieldText
+        //Si las constantes no son nulas
+        if let item = itemToEdit, let text = textField.text{
+            item.text = text
+            delegate?.addItemViewController(self, didFinishEditing: item)
+        } else {
+            //textField.text es el contenido del texto libre que anadimos en la interfaz
+            if let item = todoList?.newTodo(){
+                if let textFieldText = textField.text {
+                    item.text = textFieldText
+                }
+                item.checked = false
+                delegate?.addItemViewController(self, didFinishAdding: item)
+            }
         }
-        item.checked = false
-        delegate?.addItemViewController(self, didFinishAdding: item)
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Check si hay un item editandose
+        //Cambiamos el titulo de la pagina y se pasa el texto a la linea de texto libre
+        if let item = itemToEdit{
+            title = "Edit Item"
+            textField.text = item.text
+            addBarButton.isEnabled = true
+        }
         navigationItem.largeTitleDisplayMode = .never
         
     }
@@ -60,7 +76,7 @@ class AddItemTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         return nil
     }
-
+    
 }
 
 //TextField protocol

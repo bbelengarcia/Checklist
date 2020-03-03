@@ -46,6 +46,9 @@
                                         <constraint firstItem="P18-6E-uwP" firstAttribute="centerY" secondItem="ccG-ob-k7m" secondAttribute="centerY" id="qcv-1h-zAZ"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="6Zj-Jt-eff" kind="show" identifier="EditItemSegue" trigger="accessoryAction" id="Z7X-QX-Ghq"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -62,7 +65,7 @@
                             </barButtonItem>
                             <barButtonItem systemItem="add" id="M7v-MN-Tcr">
                                 <connections>
-                                    <segue destination="6Zj-Jt-eff" kind="show" identifier="AddItemSegues" id="wOY-rl-UB6"/>
+                                    <segue destination="6Zj-Jt-eff" kind="show" identifier="AddItemSegue" id="wOY-rl-UB6"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -122,7 +125,7 @@
                                 <action selector="cancel:" destination="6Zj-Jt-eff" id="3jN-2F-Cxd"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Add" id="Hu9-rV-XfM">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Done" id="Hu9-rV-XfM">
                             <connections>
                                 <action selector="done:" destination="6Zj-Jt-eff" id="Hre-ds-eRA"/>
                             </connections>
@@ -167,4 +170,7 @@
             <point key="canvasLocation" x="40.579710144927539" y="-167.41071428571428"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="wOY-rl-UB6"/>
+    </inferredMetricsTieBreakers>
 </document>
